@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bar_login"
+        android:title="@string/bar_main"
+        android:icon="@drawable/twotone_router_24"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/bar_option"
+        android:title="@string/bar_option"
+        android:icon="@drawable/twotone_settings_24"
+        android:enabled="true"/>
+</menu>

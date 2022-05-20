@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dr.COM 热点登录器</string>
+    <string name="password">密码</string>
+    <string name="user_account">用户名</string>
+    <string name="btn_login">登录</string>
+    <string name="remem_passwd">记住密码</string>
+    <string name="school_image_content_desc">学院图像</string>
+    <string name="choose_carrier">选择运营商：</string>
+    <string name="carrier_unicom">中国联通</string>
+    <string name="carrier_cmcc">中国移动</string>
+    <string name="carrier_chn_ct">中国电信</string>
+    <string name="bar_main">登录热点</string>
+    <string name="bar_option">首选项</string>
+    <string name="server_status_default">认证服务器状态：未知，正在检测...</string>
+    <string name="server_status_unavailable">认证服务器状态：不可用或离线</string>
+    <string name="server_status_ok">认证服务器状态：正常</string>
+    <string name="about">关于此认证登录器</string>
+    <string name="about_text">你要是问我为什么造了这么个东西，那我也不知道 XD</string>
+    <string name="auth_server_settings">认证服务器地址</string>
+    <string name="auth_server_settings_text">设置认证服务器IP地址（仅支持Dr.COM认证服务器），当前认证服务器IP为：%s</string>
+    <string name="got_it">了解</string>
+    <string name="enable_custom_auth_server">启用自定义认证服务器</string>
+    <string name="enable_custom_auth_server_text">如果你们学院的认证服务器地址和App的不一样，可以启用该设置来自定义认证服务器地址</string>
+    <string name="is_checking_states">正在检查认证服务器呢，别急</string>
+    <string name="not_implement_yet">我还没想好这里该写啥功能XD</string>
+    <string name="hint_custom_auth">自定义认证服务器IP</string>
+    <string name="empty_ip_address">空的IP地址！</string>
+    <string name="btn_apply">应用</string>
+    <string name="cancel">取消</string>
+    <string name="dialog_need_username">需要用户名！！</string>
+    <string name="dialog_need_username_text">宝，为什么不输用户名叻？是不是没开通校园网账号呀？！</string>
+    <string name="dialog_need_password">需要密码！！！</string>
+    <string name="dialog_need_password_text">宝，你是不是忘记了输密码呀？</string>
+    <string name="opensource_license">开放源代码许可</string>
+    <string name="opensource_license_text">感谢这些为开源做出贡献的人</string>
+    <string name="saved_username_passwd">已存储用户名和密码！</string>
+    <string name="show_password">显示密码</string>
+    <string name="dialog_auth_server_settings_text">你可以在这里自定义认证服务器的内网IP地址，注意！仅支持Dr.COM认证服务器哦QWQ</string>
+    <string name="dialog_denied_mobile_network">移动网络凑什么热闹，不知道这是热点登录器吗😡</string>
+    <string name="dialog_denied_mobile_title">移动网络环境错误</string>
+    <string name="dialog_denied_mobile_btn">前往“设置”</string>
+    <string name="downloading_paramfile" msgid="685182551665849043">"正在下载%1$s"</string>
+    <string name="download_completed" msgid="5430865338124330584">"下载已完成"</string>
+    <string name="error_downloading_paramfile" msgid="2431082160412515409">"无法下载%1$s"</string>
+    <string name="channel_name_downloads" msgid="8446786286617933444">"下载状态"</string>
+    <string name="channel_description_downloads" msgid="8751992699855833481">"显示下载已完成或下载已取消的通知"</string>
+    <string name="channel_name_download_progress" msgid="6805362260479605374">"下载进度"</string>
+    <string name="channel_description_download_progress" msgid="5788105841492070647">"显示文件下载进度的通知"</string>
+    <string name="login_page_title">登录状态</string>
+    <string name="srv_resp_text">服务器反馈信息：</string>
+    <string name="srv_ip_text">服务器 IP 地址：</string>
+    <string name="please_wait">请稍候...</string>
+    <string name="wait_for_response">等待服务器反馈信息中...</string>
+    <string name="web_title_text">服务器反馈页面标题：</string>
+    <string name="hotspot_available_block">热点可用</string>
+    <string name="hotspot_available_block_text">热点已经可以使用！您无需再次登录！</string>
+</resources>

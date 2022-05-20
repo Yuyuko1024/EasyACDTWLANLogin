@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1665" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable-v31/ic_launcher_foreground.xml" value="0.1665" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/baseline_login_24.xml" value="0.1" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/baseline_password_24.xml" value="0.1365" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.1365" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.213" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/ic_baseline_wifi_tethering_24.xml" value="0.1455" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1665" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1665" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/switch_thumb.xml" value="0.1935" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/switch_track.xml" value="0.1935" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/twotone_fact_check_24.xml" value="0.164" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/twotone_info_24.xml" value="0.1455" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/twotone_router_24.xml" value="0.1" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/twotone_server_24.xml" value="0.1455" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/drawable/twotone_settings_24.xml" value="0.1" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout-v31/activity_main.xml" value="0.10925925925925926" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/dialog_browser.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/dialog_custom_auth_srv.xml" value="0.1" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/dialog_empty_layout.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/dialog_picture.xml" value="0.1648148148148148" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/dialog_what.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/fragment_option.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/list_item_view_switch.xml" value="0.4" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/layout/login_page.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/menu/menu_bar.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1665" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1665" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/mipmap-anydpi-v31/ic_launcher.xml" value="0.1665" />
+        <entry key="..\:/Users/30337/AndroidStudioProjects/EasyACDTWLANLogin/app/src/main/res/xml/main_preference.xml" value="0.3912037037037037" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

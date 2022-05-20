@@ -1,0 +1,66 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Easy Dr.COM WLAN Login</string>
+    <string name="postDomain" translatable="false">http://<xliff:g id="authIP">%s</xliff:g>:<xliff:g id="authPort">%s</xliff:g>/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=<xliff:g id="authIP">%s</xliff:g>&amp;iTermType=1&amp;wlanuserip=<xliff:g id="myIpAddress">%s</xliff:g>&amp;wlanacip=null&amp;wlanacname=null&amp;mac=00-00-00-00-00-00&amp;ip=<xliff:g id="myIpAddress">%s</xliff:g>&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1</string>
+    <string name="user_account">User Account</string>
+    <string name="password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="remem_passwd">Remember Password</string>
+    <string name="school_image_content_desc">College Image</string>
+    <string name="choose_carrier">Carrier:</string>
+    <string name="carrier_unicom">China Unicom</string>
+    <string name="carrier_cmcc">CMCC</string>
+    <string name="carrier_chn_ct">China Telecom</string>
+    <string name="bar_main">Login</string>
+    <string name="bar_option">Option</string>
+    <string name="auth_server" translatable="false">172.16.174.2</string>
+    <string name="server_status_default">Auth Server status: NaN</string>
+    <string name="server_status_unavailable">Auth Server status: Unavailable</string>
+    <string name="server_status_ok">Auth Server status: Available</string>
+    <string name="about">About</string>
+    <string name="about_text">I don\'t know why i created it XD</string>
+    <string name="auth_server_settings">Auth Server Address</string>
+    <string name="auth_server_settings_text">Set Auth Server IP Address (Only support Dr.COM Auth server), current server IP: %s</string>
+    <string name="got_it">Got it !</string>
+    <string name="enable_custom_auth_server">Enable Custom Auth Server</string>
+    <string name="enable_custom_auth_server_text">If your college\'s authentication server address is different from the app\'s, you can enable this setting to customize the authentication server address</string>
+    <string name="is_checking_states">Checking the auth server status, don\'t worry :D</string>
+    <string name="not_implement_yet">I haven\'t figured out what function to write here XD</string>
+    <string name="hint_custom_auth">Custom Auth Server IP</string>
+    <string name="empty_ip_address">Empty IP Address !</string>
+    <string name="btn_apply">Apply</string>
+    <string name="cancel">Cancel</string>
+    <string name="dialog_need_username">Need Username !!!!!</string>
+    <string name="dialog_need_username_text">Bro, why not input the user name? Didn\'t you register the campus network account?!</string>
+    <string name="dialog_need_password">Need Password !!!</string>
+    <string name="dialog_need_password_text">Bro, did you forget to enter the password?</string>
+    <string name="opensource_license">Open Source License</string>
+    <string name="opensource_license_text">Thanks to those who contributed to open source</string>
+    <string name="saved_username_passwd">Saved username and password !</string>
+    <string name="show_password">Show Password</string>
+    <string name="dialog_auth_server_settings_text">You can customize the Intranet IP address of the authentication server here, attention! Only the Dr.COM authentication server is supported!</string>
+    <string name="dialog_denied_mobile_network">Mobile Network is not allowed to use this App !</string>
+    <string name="dialog_denied_mobile_title">Mobile network denied</string>
+    <string name="dialog_denied_mobile_btn">Go to \"Settings\"</string>
+    <!-- Text shown in notification to indicate that a file (filename as parameter) is being downloaded -->
+    <string name="downloading_paramfile">Downloading %1$s</string>
+    <!-- Text shown in notification to indicate that a download has completed successfully -->
+    <string name="download_completed">Download completed</string>
+    <!-- Text shown in notification to indicate that the download of a file (filename as parameter) has stopped with an error -->
+    <string name="error_downloading_paramfile">Could not download %1$s</string>
+    <!-- Notification channel name (shown in settings) for download notifications (downloaded completed or error).  [CHAR LIMIT=40] -->
+    <string name="channel_name_downloads">Downloads</string>
+    <!-- Notification channel description (shown in settings) for download notifications (downloaded completed or error). -->
+    <string name="channel_description_downloads">Notifications showing completed or cancelled downloads</string>
+    <!-- Notification channel name (shown in settings) for notifications showing progress of current downloads. [CHAR LIMIT=40] -->
+    <string name="channel_name_download_progress">Download progress</string>
+    <!-- Notification channel description (shown in settings) for notifications showing progress of current downloads. -->
+    <string name="channel_description_download_progress">Notifications showing the progress of file downloads</string>
+    <string name="login_page_title">Login Status</string>
+    <string name="srv_resp_text">"Server Response information: "</string>
+    <string name="srv_ip_text">"Server IP Address: "</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="wait_for_response">Waiting for server response message...</string>
+    <string name="web_title_text">Response Web Title:</string>
+    <string name="hotspot_available_block">Hotspot is available!</string>
+    <string name="hotspot_available_block_text">Hot spots are ready to use! You do not need to log in again!</string>
+</resources>

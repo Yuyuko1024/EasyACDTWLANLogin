@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="carrier_name">
+        <item>@string/carrier_unicom</item>
+        <item>@string/carrier_cmcc</item>
+        <item>@string/carrier_chn_ct</item>
+    </string-array>
+    
+</resources>

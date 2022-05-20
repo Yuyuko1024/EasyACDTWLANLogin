@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:icon="@drawable/twotone_info_24"
+        android:enabled="true"
+        android:key="about"
+        android:summary="@string/about_text"
+        android:title="@string/about" />
+
+    <Preference
+        android:icon="@drawable/twotone_fact_check_24"
+        android:title="@string/opensource_license"
+        android:summary="@string/opensource_license_text"
+        android:key="opensource_license"/>
+
+    <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+        android:title="@string/enable_custom_auth_server"
+        android:summary="@string/enable_custom_auth_server_text"
+        android:key="enable_custom_auth_server"
+        android:icon="@drawable/twotone_router_24"
+        android:defaultValue="false"
+        android:layout="@layout/list_item_view_switch"
+        android:enabled="true"/>
+
+    <Preference
+        android:icon="@drawable/twotone_server_24"
+        android:enabled="false"
+        android:key="auth_server"
+        android:title="@string/auth_server_settings"/>
+</androidx.preference.PreferenceScreen>
