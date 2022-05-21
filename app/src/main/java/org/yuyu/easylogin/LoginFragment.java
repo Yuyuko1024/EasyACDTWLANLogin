@@ -309,6 +309,9 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
             }else{
                 if(!username.getText().toString().equals("")){
                     if(!password.getText().toString().equals("")) {
+                        AccountEditor.saveAccount(username.getText().toString(),
+                                "",spin_carrier.getSelectedItemId(),
+                                getContext());
                         if (isInternetAvailable){
                             showDialog(getString(R.string.hotspot_available_block),getString(R.string.hotspot_available_block_text),0,true);
                         }else{
