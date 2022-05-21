@@ -64,4 +64,8 @@
     <string name="hotspot_available_block">Hotspot is available!</string>
     <string name="hotspot_available_block_text">Hot spots are ready to use! You do not need to log in again!</string>
     <string name="default_wifi_name">Akyuu\'s Default WLAN</string>
+    <string name="request_permissions_title">We need some necessary permissions</string>
+    <string name="request_permissions_desc">The application requires the following permissions: \\n Get exact position \\n Get approximate position \\nThey are used to obtain the SSID of the currently connected WiFi and the location service required by the web pages loaded by part of the WebView. We will not obtain, store and upload such information. All such information obtained by third party services through this application is used by third party services. We will not store, use or upload any such sensitive information including your personal information.</string>
+    <string name="request_denied_btn">Denied</string>
+    <string name="request_grant_btn">Grant</string>
 </resources>

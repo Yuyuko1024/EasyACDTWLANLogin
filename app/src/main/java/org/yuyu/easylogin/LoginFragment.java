@@ -1,9 +1,11 @@
 package org.yuyu.easylogin;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -19,6 +21,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
@@ -45,6 +49,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     private static final int DELAY_TIMER_MILLIS = 500;
     private static final int ACTIVITY_TRIGGER_COUNT = 3;
     private final long[] mHits = new long[ACTIVITY_TRIGGER_COUNT];
+    private final static int LOCATION_PERMISSION_TRUE = 1;
 
     MaterialButton btn_login;
     MaterialCheckBox remember_password,show_password;
@@ -54,7 +59,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     String sharedUsername,sharedPassword,customAuthServer;
     ImageView app_banner;
     LoginCore loginCore;
-    boolean is_remember_passwd,isCheckState=false,isCustomAuthServer,isInternetAvailable;
+    boolean is_remember_passwd,isCheckState=false,isCustomAuthServer,isInternetAvailable,isIgnoreGrant=false;
     long sharedCarrier;
 
     @Nullable
@@ -75,23 +80,38 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         app_banner=requireView().findViewById(R.id.app_banner);
         show_password=requireView().findViewById(R.id.show_passowrd);
         wifi_name=requireView().findViewById(R.id.wifi_name_text);
+        loadSettings();
         btn_login.setOnClickListener(new LoginFunc());
         remember_password.setOnClickListener(new RememberFunc());
         auth_server_status.setOnClickListener(new ReCheckFunc());
-        username.setText(AccountEditor.readAccount(requireContext()));
+        username.setText(AccountEditor.readAccount(getContext()));
         app_banner.setOnClickListener(new BannerFunc());
         btn_login.setClickable(false);
         show_password.setOnClickListener(new ShowPasswdFunc());
         loginCore = new LoginCore();
-        if(AccountEditor.isRememberPassword(requireContext())) {
+        requestPermissions();
+        if(AccountEditor.isRememberPassword(getContext())) {
             remember_password.setChecked(true);
-            password.setText(AccountEditor.readPassword(requireContext()));
+            password.setText(AccountEditor.readPassword(getContext()));
         }
-        spin_carrier.setSelection((int) AccountEditor.readCarrierId(requireContext()));
-        checkWifiState(requireContext());
-        wifi_name.setText(NetworkState.getWLANName(requireContext()));
+        spin_carrier.setSelection((int) AccountEditor.readCarrierId(getContext()));
+        checkWifiState(getContext());
+        wifi_name.setText(NetworkState.getWLANName(getContext()));
         InternetStatusCheck();
-        loadSettings();
+    }
+
+    private void requestPermissions(){
+        if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED && !isIgnoreGrant){
+            new MaterialAlertDialogBuilder(requireActivity())
+                    .setTitle(R.string.request_permissions_title)
+                    .setMessage(R.string.request_permissions_desc)
+                    .setCancelable(false)
+                    .setPositiveButton(R.string.request_grant_btn, (dialogInterface, i) ->
+                            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},LOCATION_PERMISSION_TRUE))
+                    .setNegativeButton(R.string.request_denied_btn, (dialogInterface, i) -> AccountEditor.setIgnoreGrant(true,getContext()))
+                    .show();
+        }
     }
 
     private void checkWifiState(Context context){
@@ -116,11 +136,12 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     private void loadSettings(){
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("LOGIN_INFO",Context.MODE_PRIVATE);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
-        sharedUsername=AccountEditor.readAccount(requireContext());
-        sharedPassword=AccountEditor.readPassword(requireContext());
-        sharedCarrier=AccountEditor.readCarrierId(requireContext());
+        sharedUsername=AccountEditor.readAccount(getContext());
+        sharedPassword=AccountEditor.readPassword(getContext());
+        sharedCarrier=AccountEditor.readCarrierId(getContext());
         isCustomAuthServer =sharedPreferences.getBoolean("enable_custom_auth_server",false);
         customAuthServer=sharedPreferences.getString("auth_server_ip",null);
+        isIgnoreGrant=sharedPreferences.getBoolean("ignore_grant",false);
         Log.e("isCustomAuthServer",String.valueOf(isCustomAuthServer));
         if(isCustomAuthServer){
             authStatusCheck(customAuthServer);
@@ -239,7 +260,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     class RememberFunc implements View.OnClickListener{
         @Override
         public void onClick(View view) {
-            AccountEditor.setRememberPassowrd(remember_password.isChecked(),requireContext());
+            AccountEditor.setRememberPassowrd(remember_password.isChecked(),getContext());
             if(!remember_password.isChecked()){
                 password.setText("");
             }
@@ -265,18 +286,18 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
             login_intent.setClassName(BuildConfig.APPLICATION_ID,BuildConfig.APPLICATION_ID+".LoginPage");
             login_intent.setAction("android.intent.action.MAIN");
             Log.d("Is Internet Available? ", String.valueOf(isInternetAvailable));
+            AccountEditor.setRememberPassowrd(remember_password.isChecked(),getContext());
             if(remember_password.isChecked()){
                 if(!username.getText().toString().equals("")){
                     if(!password.getText().toString().equals("")){
+                        AccountEditor.saveAccount(username.getText().toString(),
+                                password.getText().toString(),spin_carrier.getSelectedItemId(),
+                                getContext());
                         if (isInternetAvailable){
                             showDialog(getString(R.string.hotspot_available_block),getString(R.string.hotspot_available_block_text),0,true);
                         }else{
-                            AccountEditor.saveAccount(username.getText().toString(),
-                                    password.getText().toString(),spin_carrier.getSelectedItemId(),
-                                    requireContext());
-                            AccountEditor.setRememberPassowrd(true,requireContext());
+                            Toasty.info(getContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
                             startActivity(login_intent);
-                            Toasty.info(requireContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
                             delayPost(2000);
                         }
                     }else{
@@ -291,12 +312,8 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
                         if (isInternetAvailable){
                             showDialog(getString(R.string.hotspot_available_block),getString(R.string.hotspot_available_block_text),0,true);
                         }else{
-                            AccountEditor.saveAccount(username.getText().toString(),
-                                    password.getText().toString(), spin_carrier.getSelectedItemId(),
-                                    requireContext());
-                            AccountEditor.setRememberPassowrd(false, requireContext());
+                            Toasty.info(getContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
                             startActivity(login_intent);
-                            Toasty.info(requireContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
                             delayPost(2000);
                         }
                     }else{
@@ -314,9 +331,9 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
             try {
                 Thread.sleep(time);
                 if(isCustomAuthServer){
-                    LoginCore.LoginWithUsernamePwd(username.getText().toString(),password.getText().toString(),getCarrierTextId(spin_carrier.getSelectedItemId()),customAuthServer,requireContext());
+                    LoginCore.LoginWithUsernamePwd(username.getText().toString(),password.getText().toString(),getCarrierTextId(spin_carrier.getSelectedItemId()),customAuthServer,getContext());
                 }else{
-                    LoginCore.LoginWithUsernamePwd(username.getText().toString(),password.getText().toString(),getCarrierTextId(spin_carrier.getSelectedItemId()),getString(R.string.auth_server),requireContext());
+                    LoginCore.LoginWithUsernamePwd(username.getText().toString(),password.getText().toString(),getCarrierTextId(spin_carrier.getSelectedItemId()),getString(R.string.auth_server),getContext());
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

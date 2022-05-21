@@ -43,6 +43,13 @@ public class AccountEditor {
         return sharedPreferences.getBoolean("is_remember_password",false);
     }
 
+    public static void setIgnoreGrant(boolean ignoreGrant,Context context){
+        sharedPreferences= context.getSharedPreferences(SHARED_STRING,Context.MODE_PRIVATE);
+        sharedEditor=sharedPreferences.edit();
+        sharedEditor.putBoolean("ignore_grant",ignoreGrant);
+        sharedEditor.commit();
+    }
+
     public static String readCustomAuthIP(Context context){
         sharedPreferences= context.getSharedPreferences(SHARED_STRING,Context.MODE_PRIVATE);
         return sharedPreferences.getString("auth_server_ip",null);
