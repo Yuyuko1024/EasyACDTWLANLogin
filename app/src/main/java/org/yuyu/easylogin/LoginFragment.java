@@ -290,13 +290,13 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
             if(remember_password.isChecked()){
                 if(!username.getText().toString().equals("")){
                     if(!password.getText().toString().equals("")){
+                        Toasty.info(getContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
                         AccountEditor.saveAccount(username.getText().toString(),
                                 password.getText().toString(),spin_carrier.getSelectedItemId(),
                                 getContext());
                         if (isInternetAvailable){
                             showDialog(getString(R.string.hotspot_available_block),getString(R.string.hotspot_available_block_text),0,true);
                         }else{
-                            Toasty.info(getContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
                             startActivity(login_intent);
                             delayPost(2000);
                         }
@@ -309,13 +309,13 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
             }else{
                 if(!username.getText().toString().equals("")){
                     if(!password.getText().toString().equals("")) {
+                        Toasty.info(getContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
                         AccountEditor.saveAccount(username.getText().toString(),
                                 "",spin_carrier.getSelectedItemId(),
                                 getContext());
                         if (isInternetAvailable){
                             showDialog(getString(R.string.hotspot_available_block),getString(R.string.hotspot_available_block_text),0,true);
                         }else{
-                            Toasty.info(getContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
                             startActivity(login_intent);
                             delayPost(2000);
                         }
