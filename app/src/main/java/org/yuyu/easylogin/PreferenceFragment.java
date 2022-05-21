@@ -19,6 +19,7 @@ import java.util.Objects;
 
 import code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference;
 import de.psdev.licensesdialog.LicensesDialog;
+import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense30;
 import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense3;
 import de.psdev.licensesdialog.model.Notice;
@@ -58,6 +59,7 @@ public class PreferenceFragment extends PreferenceFragmentCompat {
                 final Notices notices = new Notices();
                 notices.addNotice(new Notice("RetroMusic - appthemehelper","https://github.com/RetroMusicPlayer/RetroMusicPlayer","Copyright (c) 2020 Hemanth Savarla.",new GnuGeneralPublicLicense30()));
                 notices.addNotice(new Notice("Toasty","https://github.com/GrenderG/Toasty","GrenderG",new GnuLesserGeneralPublicLicense3()));
+                notices.addNotice(new Notice("okhttp","https://github.com/square/okhttp","Copyright 2019 Square, Inc.",new ApacheSoftwareLicense20()));
                 new LicensesDialog.Builder(requireContext())
                         .setTitle(R.string.opensource_license)
                         .setNotices(notices)
