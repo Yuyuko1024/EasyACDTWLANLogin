@@ -39,3 +39,5 @@
 [okhttp](https://github.com/square/okhttp)
 
 [LicensesDialog](https://psdev.de/LicensesDialog)
+
+[drcom-generic](https://github.com/drcoms/drcom-generic)
