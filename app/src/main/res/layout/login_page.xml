@@ -54,7 +54,6 @@
             <ProgressBar
                 android:id="@+id/status_bar"
                 android:indeterminate="true"
-                android:indeterminateDuration="2000"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -88,6 +87,16 @@
                 android:layout_marginStart="8dp"
                 android:textSize="18sp"
                 tools:text="网页标题"/>
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
+                android:id="@+id/captive_status"
+                android:src="@drawable/ic_twotone_portable_wifi_off_24"
+                tools:src="@drawable/ic_baseline_check_24"/>
 
         </RelativeLayout>
 

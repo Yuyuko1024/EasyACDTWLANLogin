@@ -17,12 +17,16 @@ import okhttp3.Response;
 
 import org.yuyu.easylogin.R;
 import org.yuyu.easylogin.util.CallbackInterface;
+import org.yuyu.easylogin.util.NetworkState;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class LoginCore {
 
     public static CallbackInterface callbackInterface;
+    private static final ExecutorService signalThreadPool = Executors.newSingleThreadExecutor();
 
     public void setCallbackInterface(CallbackInterface callbackInterface){
         LoginCore.callbackInterface =callbackInterface;
@@ -71,9 +75,20 @@ public class LoginCore {
                     String msg = resp.substring(msgs+8,urlstart-2);
                     Log.d("Get Data","URL: "+url+", Msg: "+msg+", Code:"+code);
                     callbackInterface.resposeMsg(url,msg,authIP,code == 200);
+                    isCaptiveSuccess();
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+            }
+        });
+    }
+
+    private static void isCaptiveSuccess(){
+        signalThreadPool.submit(() ->{
+            try {
+                callbackInterface.isCaptiveSuccess(NetworkState.isInternetAvailable());
+            }catch (Exception e){
+                e.printStackTrace();
             }
         });
     }

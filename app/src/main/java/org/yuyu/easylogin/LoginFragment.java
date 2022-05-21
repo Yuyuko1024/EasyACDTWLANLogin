@@ -31,15 +31,15 @@ import com.google.android.material.textview.MaterialTextView;
 import org.yuyu.easylogin.login.LoginCore;
 import org.yuyu.easylogin.util.AccountEditor;
 import org.yuyu.easylogin.util.AuthServerStateChecker;
+import org.yuyu.easylogin.util.CallbackInterface;
 import org.yuyu.easylogin.util.NetworkState;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import es.dmoral.toasty.Toasty;
 
-public class LoginFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener{
+public class LoginFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener, CallbackInterface {
 
     private final ExecutorService signalThreadPool = Executors.newSingleThreadExecutor();
     private static final int DELAY_TIMER_MILLIS = 500;
@@ -197,6 +197,16 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         }
     }
 
+    @Override
+    public void resposeMsg(String url, String msg, String authIP, boolean isOk) {
+        //stub,not use in this fragment
+    }
+
+    @Override
+    public void isCaptiveSuccess(boolean isAvailable) {
+        isInternetAvailable=isAvailable;
+    }
+
     class ShowPasswdFunc implements View.OnClickListener{
         @Override
         public void onClick(View view) {
@@ -352,4 +362,9 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        InternetStatusCheck();
+    }
 }

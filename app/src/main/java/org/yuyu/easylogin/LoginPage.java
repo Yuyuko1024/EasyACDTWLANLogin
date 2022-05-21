@@ -1,24 +1,20 @@
 package org.yuyu.easylogin;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageButton;
-
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
+
 import com.google.android.material.textview.MaterialTextView;
 
 import org.yuyu.easylogin.login.LoginCore;
@@ -29,7 +25,8 @@ public class LoginPage extends AppCompatActivity implements CallbackInterface {
     AppCompatImageButton back;
     WebView webView;
     MaterialTextView mMsgTxt,mSrvIP,mWebTitle;
-    static ProgressBar progressBar;
+    ProgressBar progressBar;
+    ImageView mCaptiveStatus;
     String webUrl = "";
     String Msg = "";
     String authIPAddr= "";
@@ -47,6 +44,7 @@ public class LoginPage extends AppCompatActivity implements CallbackInterface {
         mMsgTxt=findViewById(R.id.status_text);
         mSrvIP=findViewById(R.id.status_text_2);
         mWebTitle=findViewById(R.id.status_text_3);
+        mCaptiveStatus=findViewById(R.id.captive_status);
         WebViewSettings();
         webView.setWebChromeClient(new WebChromeClient(){
             @Override
@@ -89,6 +87,12 @@ public class LoginPage extends AppCompatActivity implements CallbackInterface {
                     mSrvIP.setText(srvIPAdr);
                     webView.loadUrl(webUrl);
                     break;
+                case 2:
+                    mCaptiveStatus.setImageResource(R.drawable.ic_baseline_check_24);
+                    break;
+                case 3:
+                    mCaptiveStatus.setImageResource(R.drawable.ic_twotone_close_24);
+                    break;
             }
         }
     };
@@ -103,6 +107,15 @@ public class LoginPage extends AppCompatActivity implements CallbackInterface {
             handler.sendEmptyMessage(0);
         }else{
             handler.sendEmptyMessage(1);
+        }
+    }
+
+    @Override
+    public void isCaptiveSuccess(boolean isAvailable) {
+        if (isAvailable){
+            handler.sendEmptyMessage(2);
+        }else{
+            handler.sendEmptyMessage(3);
         }
     }
 
