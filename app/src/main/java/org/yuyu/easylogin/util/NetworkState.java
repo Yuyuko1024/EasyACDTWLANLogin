@@ -3,6 +3,8 @@ package org.yuyu.easylogin.util;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.util.Log;
 
 import org.yuyu.easylogin.login.Constant;
@@ -44,5 +46,11 @@ public class NetworkState {
                 captiveUrlConnection.disconnect();
             }
         }
+    }
+
+    public static String getWLANName(Context context){
+        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        return wifiInfo.getSSID();
     }
 }

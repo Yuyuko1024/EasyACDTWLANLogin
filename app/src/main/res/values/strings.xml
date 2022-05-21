@@ -58,9 +58,10 @@
     <string name="login_page_title">Login Status</string>
     <string name="srv_resp_text">"Server Response information: "</string>
     <string name="srv_ip_text">"Server IP Address: "</string>
-    <string name="please_wait">Please wait...</string>
-    <string name="wait_for_response">Waiting for server response message...</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="wait_for_response">Waiting for server response message…</string>
     <string name="web_title_text">Response Web Title:</string>
     <string name="hotspot_available_block">Hotspot is available!</string>
     <string name="hotspot_available_block_text">Hot spots are ready to use! You do not need to log in again!</string>
+    <string name="default_wifi_name">Akyuu\'s Default WLAN</string>
 </resources>

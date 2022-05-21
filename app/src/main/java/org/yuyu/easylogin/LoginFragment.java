@@ -48,7 +48,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
 
     MaterialButton btn_login;
     MaterialCheckBox remember_password,show_password;
-    MaterialTextView auth_server_status;
+    MaterialTextView auth_server_status,wifi_name;
     TextInputEditText username,password;
     AppCompatSpinner spin_carrier;
     String sharedUsername,sharedPassword,customAuthServer;
@@ -74,6 +74,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         auth_server_status=requireView().findViewById(R.id.server_status);
         app_banner=requireView().findViewById(R.id.app_banner);
         show_password=requireView().findViewById(R.id.show_passowrd);
+        wifi_name=requireView().findViewById(R.id.wifi_name_text);
         btn_login.setOnClickListener(new LoginFunc());
         remember_password.setOnClickListener(new RememberFunc());
         auth_server_status.setOnClickListener(new ReCheckFunc());
@@ -88,6 +89,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         }
         spin_carrier.setSelection((int) AccountEditor.readCarrierId(requireContext()));
         checkWifiState(requireContext());
+        wifi_name.setText(NetworkState.getWLANName(requireContext()));
         InternetStatusCheck();
         loadSettings();
     }

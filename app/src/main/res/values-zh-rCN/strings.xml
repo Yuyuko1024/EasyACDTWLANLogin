@@ -12,7 +12,7 @@
     <string name="carrier_chn_ct">中国电信</string>
     <string name="bar_main">登录热点</string>
     <string name="bar_option">首选项</string>
-    <string name="server_status_default">认证服务器状态：未知，正在检测...</string>
+    <string name="server_status_default">认证服务器状态：未知，正在检测…</string>
     <string name="server_status_unavailable">认证服务器状态：不可用或离线</string>
     <string name="server_status_ok">认证服务器状态：正常</string>
     <string name="about">关于此认证登录器</string>
@@ -50,9 +50,10 @@
     <string name="login_page_title">登录状态</string>
     <string name="srv_resp_text">服务器反馈信息：</string>
     <string name="srv_ip_text">服务器 IP 地址：</string>
-    <string name="please_wait">请稍候...</string>
-    <string name="wait_for_response">等待服务器反馈信息中...</string>
+    <string name="please_wait">请稍候…</string>
+    <string name="wait_for_response">等待服务器反馈信息中…</string>
     <string name="web_title_text">服务器反馈页面标题：</string>
     <string name="hotspot_available_block">热点可用</string>
     <string name="hotspot_available_block_text">热点已经可以使用！您无需再次登录！</string>
+    <string name="default_wifi_name">稗田阿求家的默认WiFi名</string>
 </resources>
