@@ -88,7 +88,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         }
         spin_carrier.setSelection((int) AccountEditor.readCarrierId(requireContext()));
         checkWifiState(requireContext());
-        InternetStatusCheck("www.baidu.com");
+        InternetStatusCheck();
         loadSettings();
     }
 
@@ -145,13 +145,10 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         });
     }
 
-    private void InternetStatusCheck(String address){
+    private void InternetStatusCheck(){
         signalThreadPool.submit(() -> {
             try {
-                isInternetAvailable=false;
-                if(AuthServerStateChecker.isAvailable(address)){
-                    isInternetAvailable=true;
-                }
+                isInternetAvailable=NetworkState.isInternetAvailable();
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -255,6 +252,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
             Intent login_intent= new Intent();
             login_intent.setClassName(BuildConfig.APPLICATION_ID,BuildConfig.APPLICATION_ID+".LoginPage");
             login_intent.setAction("android.intent.action.MAIN");
+            Log.d("Is Internet Available? ", String.valueOf(isInternetAvailable));
             if(remember_password.isChecked()){
                 if(!username.getText().toString().equals("")){
                     if(!password.getText().toString().equals("")){
