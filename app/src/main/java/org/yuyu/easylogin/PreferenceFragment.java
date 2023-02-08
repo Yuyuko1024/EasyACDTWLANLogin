@@ -58,8 +58,11 @@ public class PreferenceFragment extends PreferenceFragmentCompat {
             opensource_license.setOnPreferenceClickListener(preference -> {
                 final Notices notices = new Notices();
                 notices.addNotice(new Notice("RetroMusic - appthemehelper","https://github.com/RetroMusicPlayer/RetroMusicPlayer","Copyright (c) 2020 Hemanth Savarla.",new GnuGeneralPublicLicense30()));
-                notices.addNotice(new Notice("Toasty","https://github.com/GrenderG/Toasty","GrenderG",new GnuLesserGeneralPublicLicense3()));
+                notices.addNotice(new Notice("Toasty","https://github.com/GrenderG/Toasty","Copyright 2017 GrenderG",new GnuLesserGeneralPublicLicense3()));
                 notices.addNotice(new Notice("okhttp","https://github.com/square/okhttp","Copyright 2019 Square, Inc.",new ApacheSoftwareLicense20()));
+                notices.addNotice(new Notice("Material Components for Android","","Copyright 2017 Google",new ApacheSoftwareLicense20()));
+                notices.addNotice(new Notice("AndroidX","","Copyright 2005-2011 The Android Open Source Project", new ApacheSoftwareLicense20()));
+                notices.addNotice(new Notice("EasyPermissions","https://github.com/googlesamples/easypermissions","Copyright 2017 Google",new ApacheSoftwareLicense20()));
                 new LicensesDialog.Builder(requireContext())
                         .setTitle(R.string.opensource_license)
                         .setNotices(notices)

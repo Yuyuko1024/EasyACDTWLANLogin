@@ -5,14 +5,14 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     def buildSerial = new SimpleDateFormat("MMddHHmm").format(new Date())
 
     defaultConfig {
         applicationId "org.yuyu.easylogin"
-        minSdk 26
-        targetSdk 32
+        minSdk 29
+        targetSdk 33
         versionCode 1
         versionName "1.0-${buildSerial}"
 
@@ -36,12 +36,14 @@ dependencies {
     implementation fileTree(includes: ['*.aar'],dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.compose.material3:material3:1.0.0-alpha09'
+    implementation 'pub.devrel:easypermissions:3.0.0'
     implementation 'androidx.preference:preference:1.2.0'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'de.psdev.licensesdialog:licensesdialog:2.1.0'
     implementation 'com.github.GrenderG:Toasty:1.5.2'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.6'
+    implementation 'com.github.zhpanvip:bannerviewpager:3.5.10'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

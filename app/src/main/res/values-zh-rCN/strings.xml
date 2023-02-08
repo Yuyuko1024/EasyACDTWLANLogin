@@ -57,7 +57,7 @@
     <string name="hotspot_available_block_text">热点已经可以使用！您无需再次登录！</string>
     <string name="default_wifi_name">稗田阿求家的默认WiFi名</string>
     <string name="request_permissions_title">我们需要一些必要的权限</string>
-    <string name="request_permissions_desc">应用程序需要以下权限：\n\n获取精确位置\n获取粗略位置\n\n这些权限用于获取当前连接的WiFi的SSID，以及部分WebView加载的网页所需的位置服务。我们不会获取、存储和上传这些获取到的信息。第三方服务通过本应用程序获得的所有此类信息将由第三方服务使用。我们不会以任何形式储存、使用或上载任何敏感资料，包括您的个人资料。</string>
+    <string name="request_permissions_desc">应用程序需要以下权限：\n\n获取精确位置\n获取粗略位置\nAndroid 13新增：发送通知权限\n\n这些权限用于获取当前连接的WiFi的SSID，以及部分WebView加载的网页所需的位置服务，通知权限用于发送当前热点的连接状态。我们不会获取、存储和上传这些获取到的信息。第三方服务通过本应用程序获得的所有此类信息将由第三方服务使用。我们不会以任何形式储存、使用或上载任何敏感资料，包括您的个人资料。</string>
     <string name="request_denied_btn">拒绝</string>
     <string name="request_grant_btn">授权</string>
 </resources>

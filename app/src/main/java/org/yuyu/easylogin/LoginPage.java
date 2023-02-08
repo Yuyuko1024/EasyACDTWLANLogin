@@ -58,6 +58,7 @@ public class LoginPage extends AppCompatActivity implements CallbackInterface {
         });
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void WebViewSettings(){
         WebSettings webSettings = webView.getSettings();
         webSettings.setAllowFileAccess(true);

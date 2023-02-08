@@ -1,6 +1,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Easy Dr.COM WLAN Login</string>
-    <string name="postDomain" translatable="false">http://<xliff:g id="authIP">%s</xliff:g>:<xliff:g id="authPort">%s</xliff:g>/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=<xliff:g id="authIP">%s</xliff:g>&amp;iTermType=1&amp;wlanuserip=<xliff:g id="myIpAddress">%s</xliff:g>&amp;wlanacip=null&amp;wlanacname=null&amp;mac=00-00-00-00-00-00&amp;ip=<xliff:g id="myIpAddress">%s</xliff:g>&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1</string>
+    <string name="postDomain" translatable="false">http://<xliff:g id="authIP">%s</xliff:g>:801/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=<xliff:g id="authIP">%s</xliff:g>&amp;iTermType=1&amp;wlanuserip=<xliff:g
+            id="myIpAddress">
+        %s</xliff:g>&amp;wlanacip=null&amp;wlanacname=null&amp;mac=00-00-00-00-00-00&amp;ip=<xliff:g id="myIpAddress">
+        %s</xliff:g>&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1
+    </string>
     <string name="user_account">User Account</string>
     <string name="password">Password</string>
     <string name="btn_login">Login</string>
@@ -19,10 +23,14 @@
     <string name="about">About</string>
     <string name="about_text">I don\'t know why i created it XD</string>
     <string name="auth_server_settings">Auth Server Address</string>
-    <string name="auth_server_settings_text">Set Auth Server IP Address (Only support Dr.COM Auth server), current server IP: %s</string>
+    <string name="auth_server_settings_text">Set Auth Server IP Address (Only support Dr.COM Auth server), current
+        server IP: %s
+    </string>
     <string name="got_it">Got it !</string>
     <string name="enable_custom_auth_server">Enable Custom Auth Server</string>
-    <string name="enable_custom_auth_server_text">If your college\'s authentication server address is different from the app\'s, you can enable this setting to customize the authentication server address</string>
+    <string name="enable_custom_auth_server_text">If your college\'s authentication server address is different from the
+        app\'s, you can enable this setting to customize the authentication server address
+    </string>
     <string name="is_checking_states">Checking the auth server status, don\'t worry :D</string>
     <string name="not_implement_yet">I haven\'t figured out what function to write here XD</string>
     <string name="hint_custom_auth">Custom Auth Server IP</string>
@@ -30,14 +38,18 @@
     <string name="btn_apply">Apply</string>
     <string name="cancel">Cancel</string>
     <string name="dialog_need_username">Need Username !!!!!</string>
-    <string name="dialog_need_username_text">Bro, why not input the user name? Didn\'t you register the campus network account?!</string>
+    <string name="dialog_need_username_text">Bro, why not input the user name? Didn\'t you register the campus network
+        account?!
+    </string>
     <string name="dialog_need_password">Need Password !!!</string>
     <string name="dialog_need_password_text">Bro, did you forget to enter the password?</string>
     <string name="opensource_license">Open Source License</string>
     <string name="opensource_license_text">Thanks to those who contributed to open source</string>
     <string name="saved_username_passwd">Saved username and password !</string>
     <string name="show_password">Show Password</string>
-    <string name="dialog_auth_server_settings_text">You can customize the Intranet IP address of the authentication server here, attention! Only the Dr.COM authentication server is supported!</string>
+    <string name="dialog_auth_server_settings_text">You can customize the Intranet IP address of the authentication
+        server here, attention! Only the Dr.COM authentication server is supported!
+    </string>
     <string name="dialog_denied_mobile_network">Mobile Network is not allowed to use this App !</string>
     <string name="dialog_denied_mobile_title">Mobile network denied</string>
     <string name="dialog_denied_mobile_btn">Go to \"Settings\"</string>
@@ -65,7 +77,13 @@
     <string name="hotspot_available_block_text">Hot spots are ready to use! You do not need to log in again!</string>
     <string name="default_wifi_name">Akyuu\'s Default WLAN</string>
     <string name="request_permissions_title">We need some necessary permissions</string>
-    <string name="request_permissions_desc">The application requires the following permissions: \\n Get exact position \\n Get approximate position \\nThey are used to obtain the SSID of the currently connected WiFi and the location service required by the web pages loaded by part of the WebView. We will not obtain, store and upload such information. All such information obtained by third party services through this application is used by third party services. We will not store, use or upload any such sensitive information including your personal information.</string>
+    <string name="request_permissions_desc">The application requires the following permissions: \\n Get exact position
+        \\n Get approximate position \\nThey are used to obtain the SSID of the currently connected WiFi and the
+        location service required by the web pages loaded by part of the WebView. We will not obtain, store and upload
+        such information. All such information obtained by third party services through this application is used by
+        third party services. We will not store, use or upload any such sensitive information including your personal
+        information.
+    </string>
     <string name="request_denied_btn">Denied</string>
     <string name="request_grant_btn">Grant</string>
 </resources>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".LoginFragment"
+              android:baselineAligned="false">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="20dp"
+        android:id="@+id/banner_view">
+
+        <ImageView
+                android:id="@+id/app_banner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/school_image_content_desc"
+                android:src="@drawable/app_banner"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical|center_horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:cardElevation="6dp"
+                app:cardMaxElevation="12dp"
+                app:state_dragged="true">
+
+            <RelativeLayout
+                    android:id="@+id/account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp">
+
+                <LinearLayout
+                        android:id="@+id/wlan_name_panel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+                    <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_twotone_wifi_24"
+                            tools:src="@drawable/ic_twotone_wifi_24"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:id="@+id/wifi_name_text"
+                            android:text="@string/default_wifi_name"
+                            android:layout_gravity="center_vertical"
+                            tools:text="AHGF-Student(学生)"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/username_layout"
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/wlan_name_panel"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginEnd="6dp"
+                            android:src="@drawable/ic_baseline_account_box_24"
+                            tools:ignore="ContentDescription"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/username"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:autofillHints="username"
+                                android:gravity="fill_vertical"
+                                android:hint="@string/user_account"
+                                android:inputType="number"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/password_layout"
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/username_layout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginEnd="6dp"
+                            android:src="@drawable/baseline_password_24"
+                            tools:ignore="ContentDescription"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:autofillHints="password"
+                                android:hint="@string/password"
+                                android:inputType="textPassword"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                        android:id="@+id/carrier_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/password_layout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/choose_carrier_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/choose_carrier"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/carrier"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/choose_carrier_text"
+                            android:entries="@array/carrier_name"
+                            android:spinnerMode="dropdown"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                        android:id="@+id/checkbox_layout"
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/carrier_layout"
+                        android:layout_centerHorizontal="true">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/remember_password"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/remem_passwd"/>
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/show_passowrd"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/show_password"/>
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                        android:id="@+id/login"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/checkbox_layout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:elevation="10dp"
+                        android:text="@string/btn_login"
+                        android:textSize="14sp"
+                        android:backgroundTint="@color/system_accent_soft"
+                        app:icon="@drawable/baseline_login_24"
+                        app:iconSize="18dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/server_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/login"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/server_status_default"/>
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -29,7 +29,7 @@ public class LoginCore {
     private static final ExecutorService signalThreadPool = Executors.newSingleThreadExecutor();
 
     public void setCallbackInterface(CallbackInterface callbackInterface){
-        LoginCore.callbackInterface =callbackInterface;
+        LoginCore.callbackInterface = callbackInterface;
     }
 
     public static void LoginWithUsernamePwd(String username, String password, String carrier,String authIP, Context context){
@@ -38,7 +38,7 @@ public class LoginCore {
         String myIpAddress = intToIp(wifiInfo.getIpAddress());
         Log.d("Get Wifi IP Address",myIpAddress);
         Log.d("Get Auth Server IP",authIP);
-        String postDomain = context.getString(R.string.postDomain,authIP,"801",authIP,myIpAddress,myIpAddress);
+        String postDomain = context.getString(R.string.postDomain,authIP,authIP,myIpAddress,myIpAddress);
         Log.d("Formated PostDomain:",postDomain);
         OkHttpClient okHttpClient = new OkHttpClient();
         RequestBody requestBody = new FormBody.Builder()

@@ -1,21 +1,29 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Theme.EasyACDTWLANLogin" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/system_accent</item>
         <item name="colorPrimaryDark">@color/system_accent_darker</item>
         <item name="colorSecondary">@color/system_accent_2</item>
-        <item name="android:statusBarColor">@color/netrual_color</item>
-        <item name="android:colorBackground">@color/netrual_color</item>
+
+        <item name="colorError">@color/error</item>
 
         <item name="colorPrimaryVariant">@color/system_accent</item>
         <item name="colorSecondaryVariant">@color/system_accent_2</item>
+        <item name="scrimBackground">@color/netrual_color</item>
+
+        <item name="colorSurface">@color/netrual_color</item>
         <item name="colorSecondaryContainer">@color/system_accent_soft</item>
 
-        <!-- Customize your theme here. -->
-        <item name="scrimBackground">@color/netrual_color</item>
-        <item name="colorSurface">@color/netrual_color</item>
-        <item name="android:navigationBarColor">@color/netrual_color_2</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowSplashScreenBackground">@color/background</item>
+    </style>
+
+    <style name="Material3Button" parent="Widget.Material3.Button.ElevatedButton.Icon">
+        <item name="iconSize">18dp</item>
+        <item name="backgroundTint">@color/system_accent_soft</item>
+        <item name="elevation">10dp</item>
     </style>
 </resources>

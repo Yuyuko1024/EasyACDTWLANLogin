@@ -10,11 +10,11 @@ import java.io.InputStreamReader;
 public class AuthServerStateChecker {
 
     public static boolean isAvailable(String ipAddress){
-        return Ping(ipAddress).equals("success");
+        return Ping(ipAddress);
     }
 
-    private static String Ping(String str) {
-        String result = "";
+    private static boolean Ping(String str) {
+        boolean result = false;
         Process p;
         try {
             //ping -c 3 -w 100  中  ，-c 是指ping的次数 3是指ping 3次 ，-w 10  以秒为单位指定超时间隔，是指超时时间为10秒
@@ -29,10 +29,9 @@ public class AuthServerStateChecker {
             }
             System.out.println("Return ============" + buffer);
             if (status == 0) {
-                result = "success";
+                result = true;
                 Log.d("PING_Status", "Auth server ping success");
             } else {
-                result = "faild";
                 Log.e("PING_Status", "Auth server ping faild");
             }
         } catch (IOException | InterruptedException e) {

@@ -1,0 +1,35 @@
+{
+  "easyGoVersion": "1.0",
+  "client": "org.yuyu.easylogin",
+  "logicEntities": [
+    {
+      "head": {
+        "function": "magicwindow",
+        "required": "true"
+      },
+      "body": {
+        "mode": "0",
+        "activityPairs":[
+          {"from":"org.yuyu.easylogin.MainActivity","to":"*"}
+        ],
+        "transActivities": [
+        ],
+        "isRelaunchwhenResize":"false",
+        "defSwitch": "full",
+        "supportAppTaskSplitScreen":"true",
+        "Activities": [
+          {
+            "name": "org.yuyu.easylogin.MainActivity",
+            "defaultFullScreen": "true"
+          },
+          {
+            "name": "org.yuyu.easylogin.LoginPage",
+            "defaultFullScreen": "false",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          }
+        ]
+      }
+    }
+  ]
+}

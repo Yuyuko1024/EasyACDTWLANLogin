@@ -5,7 +5,12 @@ import android.content.Intent;
 import android.os.IBinder;
 
 public class NetStatsService extends Service {
-    public NetStatsService() {
+    public NetStatsService() {}
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
     }
 
     @Override

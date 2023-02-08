@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="org.yuyu.easylogin">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="org.yuyu.easylogin">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.MAINLINE_NETWORK_STACK" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.MAINLINE_NETWORK_STACK"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/network_policy"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.EasyACDTWLANLogin"
-        android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:networkSecurityConfig="@xml/network_policy"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.EasyACDTWLANLogin"
+            android:usesCleartextTraffic="true">
+
+        <meta-data
+                android:name="EasyGoClient"
+                android:value="true"/>
+
         <activity
-            android:name=".LoginPage"
-            android:exported="false" />
+                android:name=".LoginPage"
+                android:exported="false"/>
 
         <service
-            android:name=".service.DownloadService"
-            android:enabled="true"
-            android:exported="false" />
+                android:name=".service.DownloadService"
+                android:enabled="true"
+                android:exported="false"/>
         <!--
         receiver
             android:name=".receiver.NetStateReceiver"
@@ -45,14 +51,14 @@
             android:exported="true" /
         -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+                android:name=".MainActivity"
+                android:exported="true"
+                android:windowSoftInputMode="adjustPan">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.net.conn.CAPTIVE_PORTAL" />
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.net.conn.CAPTIVE_PORTAL"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
     </application>
