@@ -3,11 +3,8 @@ package org.yuyu.easylogin;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,13 +15,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatSpinner;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
@@ -33,19 +27,24 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
+import com.zhpan.bannerview.BannerViewPager;
+import com.zhpan.indicator.enums.IndicatorSlideMode;
+import com.zhpan.indicator.enums.IndicatorStyle;
 
+import org.yuyu.easylogin.adapter.AppBannerAdapter;
 import org.yuyu.easylogin.login.LoginCore;
 import org.yuyu.easylogin.util.AccountEditor;
 import org.yuyu.easylogin.util.AuthServerStateChecker;
+import org.yuyu.easylogin.bean.BannerDataBean;
 import org.yuyu.easylogin.util.CallbackInterface;
 import org.yuyu.easylogin.util.NetworkState;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import es.dmoral.toasty.Toasty;
-import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class LoginFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener, CallbackInterface, EasyPermissions.PermissionCallbacks {
@@ -54,13 +53,13 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     private static final int DELAY_TIMER_MILLIS = 500;
     private static final int ACTIVITY_TRIGGER_COUNT = 3;
     private final long[] mHits = new long[ACTIVITY_TRIGGER_COUNT];
+    private BannerViewPager<BannerDataBean> mBannerPager;
     MaterialButton btn_login;
     MaterialCheckBox remember_password,show_password;
     MaterialTextView auth_server_status,wifi_name;
     TextInputEditText username,password;
     AppCompatSpinner spin_carrier;
     String sharedUsername,sharedPassword,customAuthServer;
-    ImageView app_banner;
     LoginCore loginCore;
     boolean is_remember_passwd,isCheckState=false,isCustomAuthServer,isInternetAvailable,isIgnoreGrant=false,isDebug=true;
     long sharedCarrier;
@@ -80,15 +79,14 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         password=requireView().findViewById(R.id.password);
         spin_carrier=requireView().findViewById(R.id.carrier);
         auth_server_status=requireView().findViewById(R.id.server_status);
-        app_banner=requireView().findViewById(R.id.app_banner);
         show_password=requireView().findViewById(R.id.show_passowrd);
         wifi_name=requireView().findViewById(R.id.wifi_name_text);
         loadSettings();
+        setupBannerPager();
         btn_login.setOnClickListener(new LoginFunc());
         remember_password.setOnClickListener(new RememberFunc());
         auth_server_status.setOnClickListener(new ReCheckFunc());
         username.setText(AccountEditor.readAccount(getContext()));
-        app_banner.setOnClickListener(new BannerFunc());
         btn_login.setEnabled(false);
         show_password.setOnClickListener(new ShowPasswdFunc());
         loginCore = new LoginCore();
@@ -281,6 +279,21 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
                 password.setText("");
             }
         }
+    }
+
+    private void setupBannerPager() {
+        mBannerPager = requireView().findViewById(R.id.banner);
+        List<BannerDataBean> list = new ArrayList<>();
+        list.add(new BannerDataBean(R.drawable.app_banner, "https://www.acdt.edu.cn/"));
+        list.add(new BannerDataBean(R.drawable.banner_logo_2));
+        mBannerPager.setLifecycleRegistry(getLifecycle())
+                .setAdapter(new AppBannerAdapter())
+                .setAutoPlay(true)
+                .setIndicatorStyle(IndicatorStyle.ROUND_RECT)
+                .setIndicatorSlideMode(IndicatorSlideMode.SCALE)
+                .setIndicatorSliderColor(getResources().getColor(R.color.system_accent),getResources().getColor(R.color.white_alpha))
+                .create();
+        mBannerPager.refreshData(list);
     }
 
     class BannerFunc implements View.OnClickListener{
