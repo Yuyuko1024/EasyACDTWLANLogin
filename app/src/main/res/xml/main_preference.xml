@@ -27,4 +27,13 @@
         android:enabled="false"
         android:key="auth_server"
         android:title="@string/auth_server_settings"/>
+
+    <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+        android:title="@string/debug_pref_title"
+        android:summary="@string/debug_pref_summary"
+        android:key="enable_debug_mode"
+        android:icon="@drawable/ic_debug_mode"
+        android:defaultValue="false"
+        android:layout="@layout/list_item_view_switch"/>
+
 </androidx.preference.PreferenceScreen>

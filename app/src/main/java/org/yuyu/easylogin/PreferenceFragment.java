@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -30,7 +31,7 @@ public class PreferenceFragment extends PreferenceFragmentCompat {
     Preference about,custom_auth_server,opensource_license;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedEditor;
-    ATESwitchPreference enable_custom_auth_server;
+    ATESwitchPreference enable_custom_auth_server,enable_debug_mode;
     TextInputEditText custom_auth_input;
     private static final String SHARED_STRING = "LOGIN_INFO";
 
@@ -43,6 +44,18 @@ public class PreferenceFragment extends PreferenceFragmentCompat {
         custom_auth_server=findPreference("auth_server");
         opensource_license=findPreference("opensource_license");
         enable_custom_auth_server=findPreference("enable_custom_auth_server");
+        enable_debug_mode=findPreference("enable_debug_mode");
+        if (enable_debug_mode != null) {
+            if (!BuildConfig.DEBUG){
+                getPreferenceScreen().removePreference(enable_debug_mode);
+            }
+            enable_debug_mode.setOnPreferenceChangeListener((preference, newValue) -> {
+                boolean value = (boolean) newValue;
+                sharedEditor.putBoolean("debug_mode",value);
+                sharedEditor.commit();
+                return true;
+            });
+        }
         if (about != null) {
             about.setOnPreferenceClickListener(preference -> {
                 new MaterialAlertDialogBuilder(requireActivity())

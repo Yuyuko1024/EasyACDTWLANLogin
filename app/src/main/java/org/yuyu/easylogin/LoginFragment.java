@@ -147,6 +147,10 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         customAuthServer=sharedPreferences.getString("auth_server_ip",null);
         isIgnoreGrant=sharedPreferences.getBoolean("ignore_grant",false);
         Log.e("isCustomAuthServer",String.valueOf(isCustomAuthServer));
+        isDebug=sharedPreferences.getBoolean("debug_mode",false);
+        if (isDebug){
+            Toasty.warning(requireContext(),"Debug is on the way",Toasty.LENGTH_SHORT,true).show();
+        }
         if(isCustomAuthServer){
             authStatusCheck(customAuthServer);
         }else{
@@ -316,21 +320,29 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
             login_intent.setAction("android.intent.action.MAIN");
             Log.d("Is Internet Available? ", String.valueOf(isInternetAvailable));
             AccountEditor.setRememberPassowrd(remember_password.isChecked(),getContext());
+            //如果“记住密码”是勾选状态
             if(remember_password.isChecked()){
+                //如果用户名框内不为空
                 if(!username.getText().toString().equals("")){
+                    //如果密码框内不为空
                     if(!password.getText().toString().equals("")){
+                        //执行保存用户名密码的操作
                         Toasty.info(getContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
                         AccountEditor.saveAccount(username.getText().toString(),
                                 password.getText().toString(),spin_carrier.getSelectedItemId(),
                                 getContext());
+                        //若当前的网络可用
                         if (isInternetAvailable){
+                            //如果处于调试模式，则无视网络环境可用继续进行登录操作
                             if (isDebug){
                                 startActivity(login_intent);
                                 delayPost(2000);
                             }else{
+                                //否则显示阻止登录对话框告诉用户当前网络已经可用
                                 showDialog(getString(R.string.hotspot_available_block),getString(R.string.hotspot_available_block_text),0,true);
                             }
                         }else{
+                            //若网络不可用，则开始登录操作
                             startActivity(login_intent);
                             delayPost(2000);
                         }
@@ -341,12 +353,16 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
                     showDialog(getString(R.string.dialog_need_username),getString(R.string.dialog_need_username_text),R.layout.dialog_what,false);
                 }
             }else{
+                //如果“记住密码”没有被勾选
+                //逻辑大体同上，检查用户名和密码的完整性
                 if(!username.getText().toString().equals("")){
                     if(!password.getText().toString().equals("")) {
                         Toasty.info(getContext(),getString(R.string.saved_username_passwd),Toasty.LENGTH_LONG,true).show();
+                        //此处与上面逻辑不同，此处不存储用户填写的密码
                         AccountEditor.saveAccount(username.getText().toString(),
                                 "",spin_carrier.getSelectedItemId(),
                                 getContext());
+                        //仍然是检查网络是否可用
                         if (isInternetAvailable){
                             if (isDebug){
                                 startActivity(login_intent);
@@ -374,11 +390,13 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
                 Thread.sleep(time);
                 if(isCustomAuthServer){
                     if (isAdded()){
-                        LoginCore.LoginWithUsernamePwd(username.getText().toString(),password.getText().toString(),getCarrierTextId(spin_carrier.getSelectedItemId()),customAuthServer,getContext());
+                        LoginCore.LoginWithUsernamePwd(username.getText().toString(),password.getText().toString(),
+                                getCarrierTextId(spin_carrier.getSelectedItemId()),customAuthServer,getContext());
                     }
                 }else{
                     if (isAdded()) {
-                        LoginCore.LoginWithUsernamePwd(username.getText().toString(), password.getText().toString(), getCarrierTextId(spin_carrier.getSelectedItemId()), getString(R.string.auth_server), getContext());
+                        LoginCore.LoginWithUsernamePwd(username.getText().toString(), password.getText().toString(),
+                                getCarrierTextId(spin_carrier.getSelectedItemId()), getString(R.string.auth_server), getContext());
                     }
                 }
             } catch (InterruptedException e) {
