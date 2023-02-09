@@ -26,10 +26,12 @@ public class MainActivity extends AppCompatActivity {
         bottomBar=findViewById(R.id.bar);
         String config = getApplicationContext().getResources().getConfiguration().toString();
         Log.d("Config",config);
-        if (config.contains("zui-magic-windows")){
-            Toast.makeText(this, "App 运行于 平行视窗中", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(this, "App 没有运行于 平行视窗中", Toast.LENGTH_SHORT).show();
+        if (BuildConfig.DEBUG) {
+            if (config.contains("zui-magic-windows")){
+                Toast.makeText(this, R.string.debug_app_run_magic, Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, R.string.debug_app_not_run_magic, Toast.LENGTH_SHORT).show();
+            }
         }
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction()

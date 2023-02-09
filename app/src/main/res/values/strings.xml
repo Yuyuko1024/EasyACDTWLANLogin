@@ -86,4 +86,6 @@
     </string>
     <string name="request_denied_btn">Denied</string>
     <string name="request_grant_btn">Grant</string>
+    <string name="debug_app_run_magic">The App runs in a parallel window</string>
+    <string name="debug_app_not_run_magic">The App is not running in a parallel window</string>
 </resources>
