@@ -1,6 +1,8 @@
 package org.yuyu.easylogin;
 
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -17,12 +19,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.dialog.MaterialDialogs;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigationrail.NavigationRailView;
 
 import org.yuyu.easylogin.adapter.ViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomBar;
+    private NavigationRailView railBar;
     private ViewAdapter adapter;
     private ViewPager2 pager;
 
@@ -30,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomBar = findViewById(R.id.bar);
         pager = findViewById(R.id.pager);
         String config = getApplicationContext().getResources().getConfiguration().toString();
         Log.d("Config", config);
@@ -42,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         adapter = new ViewAdapter(this);
-        initActivity();
         initBottomNav();
+        initActivity();
     }
 
     private void initActivity() {
@@ -55,22 +58,47 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                bottomBar.getMenu().getItem(position).setChecked(true);
+                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    //若为横屏
+                    railBar.getMenu().getItem(position).setChecked(true);
+                } else {
+                    //若为竖屏
+                    bottomBar.getMenu().getItem(position).setChecked(true);
+                }
             }
         });
     }
 
     private void initBottomNav() {
-        bottomBar.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
-                case R.id.bar_login:
-                    pager.setCurrentItem(0);
-                    return true;
-                case R.id.bar_option:
-                    pager.setCurrentItem(1);
-                    return true;
-            }
-            return false;
-        });
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            //若为横屏
+            railBar = findViewById(R.id.rail_bar);
+            railBar.setOnItemSelectedListener(item -> {
+                switch (item.getItemId()){
+                    case R.id.bar_login:
+                        pager.setCurrentItem(0);
+                        return true;
+                    case R.id.bar_option:
+                        pager.setCurrentItem(1);
+                        return true;
+                }
+                return false;
+            });
+        } else {
+            //若为竖屏
+            bottomBar = findViewById(R.id.bar);
+            bottomBar.setOnItemSelectedListener(item -> {
+                switch (item.getItemId()){
+                    case R.id.bar_login:
+                        pager.setCurrentItem(0);
+                        return true;
+                    case R.id.bar_option:
+                        pager.setCurrentItem(1);
+                        return true;
+                }
+                return false;
+            });
+        }
+
     }
 }

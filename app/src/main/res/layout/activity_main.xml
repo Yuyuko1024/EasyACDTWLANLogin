@@ -38,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:backgroundTint="?android:colorBackground"
+        app:itemHorizontalTranslationEnabled="true"
         app:menu="@menu/menu_bar" />
 
 </RelativeLayout>
