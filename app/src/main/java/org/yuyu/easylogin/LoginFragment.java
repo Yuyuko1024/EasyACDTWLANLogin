@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -102,7 +103,12 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     }
 
     private void requestPermissions(){
-        String[] perms = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.POST_NOTIFICATIONS};
+        String[] perms;
+        if (Build.VERSION.SDK_INT==33){
+            perms = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.POST_NOTIFICATIONS};
+        } else {
+            perms = new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
+        }
         if (!EasyPermissions.hasPermissions(requireContext(),perms) && !isIgnoreGrant){
             new MaterialAlertDialogBuilder(requireActivity())
                     .setTitle(R.string.request_permissions_title)
@@ -119,7 +125,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     }
 
     private void checkWifiState(Context context){
-        if(!NetworkState.isWifi(context)){
+        if(!NetworkState.isWifi(context) && !BuildConfig.DEBUG){
             new MaterialAlertDialogBuilder(requireActivity())
                     .setTitle(R.string.dialog_denied_mobile_title)
                     .setMessage(R.string.dialog_denied_mobile_network)
