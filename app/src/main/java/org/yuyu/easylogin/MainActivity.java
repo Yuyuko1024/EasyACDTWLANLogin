@@ -5,79 +5,72 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.dialog.MaterialDialogs;
+import com.google.android.material.navigation.NavigationBarView;
+
+import org.yuyu.easylogin.adapter.ViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomBar;
-    Fragment loginFragment = new LoginFragment();
-    Fragment preferenceFragment = new PreferenceFragment();
+    private BottomNavigationView bottomBar;
+    private ViewAdapter adapter;
+    private ViewPager2 pager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomBar=findViewById(R.id.bar);
+        bottomBar = findViewById(R.id.bar);
+        pager = findViewById(R.id.pager);
         String config = getApplicationContext().getResources().getConfiguration().toString();
-        Log.d("Config",config);
+        Log.d("Config", config);
         if (BuildConfig.DEBUG) {
-            if (config.contains("zui-magic-windows")){
+            if (config.contains("zui-magic-windows")) {
                 Toast.makeText(this, R.string.debug_app_run_magic, Toast.LENGTH_SHORT).show();
-            }else {
+            } else {
                 Toast.makeText(this, R.string.debug_app_not_run_magic, Toast.LENGTH_SHORT).show();
             }
         }
-        if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container_view, loginFragment, "login_fragment").hide(preferenceFragment)
-                    .add(R.id.fragment_container_view, preferenceFragment, "preference_fragment")
-                    .commit();
-        }else{
-            loginFragment = getSupportFragmentManager().findFragmentByTag("login_fragment");
-            preferenceFragment = getSupportFragmentManager().findFragmentByTag("preference_fragment");
-            switch(bottomBar.getSelectedItemId()){
-                case R.id.bar_login:
-                    getSupportFragmentManager().beginTransaction().show(loginFragment).commit();
-                    break;
-                case R.id.bar_option:
-                    getSupportFragmentManager().beginTransaction().show(preferenceFragment).commit();
-                    break;
+        adapter = new ViewAdapter(this);
+        initActivity();
+        initBottomNav();
+    }
+
+    private void initActivity() {
+        pager.setAdapter(adapter);
+        adapter.addFragment(new LoginFragment());
+        adapter.addFragment(new PreferenceFragment());
+        pager.setCurrentItem(0,true);
+        pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                bottomBar.getMenu().getItem(position).setChecked(true);
             }
-        }
+        });
+    }
+
+    private void initBottomNav() {
         bottomBar.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.bar_login:
-                    getSupportFragmentManager().beginTransaction()
-                            .show(loginFragment).hide(preferenceFragment)
-                            .commit();
+                    pager.setCurrentItem(0);
                     return true;
                 case R.id.bar_option:
-                    getSupportFragmentManager().beginTransaction()
-                            .show(preferenceFragment).hide(loginFragment)
-                            .commit();
+                    pager.setCurrentItem(1);
                     return true;
             }
             return false;
         });
     }
-
-    /*@Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK){
-            new MaterialAlertDialogBuilder(this)
-                    .setTitle("退出应用")
-                    .setMessage("是否退出？")
-                    .setCancelable(true)
-                    .setPositiveButton(R.string.got_it, (dialog, which) -> finish())
-                    .setNegativeButton(R.string.cancel,null)
-                    .show();
-        }
-        return true;
-    }*/
 }

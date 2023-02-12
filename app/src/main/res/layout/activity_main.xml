@@ -24,13 +24,13 @@
         </com.google.android.material.appbar.AppBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/bar"
-            android:layout_below="@+id/coor"
-            android:background="?android:colorBackground"/>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bar"
+        android:layout_below="@+id/coor"
+        android:background="?android:colorBackground"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bar"
