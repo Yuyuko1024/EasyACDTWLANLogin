@@ -22,6 +22,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigationrail.NavigationRailView;
 
 import org.yuyu.easylogin.adapter.ViewAdapter;
+import org.yuyu.easylogin.util.UiUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!UiUtils.isLargeScreen(getApplicationContext())){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            if (BuildConfig.DEBUG) {
+                Log.d("MainActivity","检测到手机设备，已锁定布局。");
+            }
+        }
         setContentView(R.layout.activity_main);
         pager = findViewById(R.id.pager);
         String config = getApplicationContext().getResources().getConfiguration().toString();
