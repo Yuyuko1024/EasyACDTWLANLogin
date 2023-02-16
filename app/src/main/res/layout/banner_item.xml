@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
@@ -12,4 +12,14 @@
         android:contentDescription="@string/school_image_content_desc"
         tools:src="@drawable/app_banner"/>
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:layout_gravity="bottom"
+        android:id="@+id/title"
+        android:text="@string/app_name"
+        android:textSize="18sp"
+        android:textColor="@color/system_accent_darker"/>
+
+</FrameLayout>

@@ -294,8 +294,8 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     private void setupBannerPager() {
         mBannerPager = requireView().findViewById(R.id.banner);
         List<BannerDataBean> list = new ArrayList<>();
-        list.add(new BannerDataBean(R.drawable.app_banner, "https://www.acdt.edu.cn/"));
-        list.add(new BannerDataBean(R.drawable.banner_logo_2));
+        list.add(new BannerDataBean(R.drawable.app_banner, "https://www.acdt.edu.cn/","banner","国防科技职业学院背景"));
+        list.add(new BannerDataBean(R.drawable.banner_logo_2,"https://www.acdt.edu.cn/","点击获取示例代码"));
         mBannerPager.setLifecycleRegistry(getLifecycle())
                 .setAdapter(new AppBannerAdapter())
                 .setAutoPlay(true)
