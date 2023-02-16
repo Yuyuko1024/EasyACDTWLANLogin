@@ -52,9 +52,10 @@
             android:exported="true" /
         -->
         <activity
-                android:name=".MainActivity"
-                android:exported="true"
-                android:windowSoftInputMode="adjustPan">
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.net.conn.CAPTIVE_PORTAL"/>

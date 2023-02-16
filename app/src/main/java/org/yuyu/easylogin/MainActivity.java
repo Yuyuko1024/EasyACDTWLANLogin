@@ -26,6 +26,7 @@ import org.yuyu.easylogin.util.UiUtils;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
     private BottomNavigationView bottomBar;
     private NavigationRailView railBar;
     private ViewAdapter adapter;
@@ -37,13 +38,13 @@ public class MainActivity extends AppCompatActivity {
         if (!UiUtils.isLargeScreen(getApplicationContext())){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             if (BuildConfig.DEBUG) {
-                Log.d("MainActivity","检测到手机设备，已锁定布局。");
+                Log.d(TAG,"检测到手机设备，已锁定布局。");
             }
         }
         setContentView(R.layout.activity_main);
         pager = findViewById(R.id.pager);
         String config = getApplicationContext().getResources().getConfiguration().toString();
-        Log.d("Config", config);
+        Log.d(TAG, config);
         if (BuildConfig.DEBUG) {
             if (config.contains("zui-magic-windows")) {
                 Toast.makeText(this, R.string.debug_app_run_magic, Toast.LENGTH_SHORT).show();
@@ -107,5 +108,16 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            //do nothing
+            Log.d(TAG,"转为横屏");
+        } else {
+            //do nothing too
+            Log.d(TAG,"转为竖屏");
+        }
     }
 }
