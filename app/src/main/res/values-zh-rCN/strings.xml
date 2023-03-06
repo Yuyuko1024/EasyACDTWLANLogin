@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dr.COM 热点登录器</string>
+    <string name="app_name">安徽国防科技职院热点登录器</string>
     <string name="password">密码</string>
     <string name="user_account">用户名</string>
     <string name="btn_login">登录</string>
@@ -17,15 +17,9 @@
     <string name="server_status_ok">认证服务器状态：正常</string>
     <string name="about">关于此认证登录器</string>
     <string name="about_text">你要是问我为什么造了这么个东西，那我也不知道 XD</string>
-    <string name="auth_server_settings">认证服务器地址</string>
-    <string name="auth_server_settings_text">设置认证服务器IP地址（仅支持Dr.COM认证服务器），当前认证服务器IP为：%s</string>
     <string name="got_it">了解</string>
-    <string name="enable_custom_auth_server">启用自定义认证服务器</string>
-    <string name="enable_custom_auth_server_text">如果你们学院的认证服务器地址和App的不一样，可以启用该设置来自定义认证服务器地址</string>
     <string name="is_checking_states">正在检查认证服务器呢，别急</string>
     <string name="not_implement_yet">我还没想好这里该写啥功能XD</string>
-    <string name="hint_custom_auth">自定义认证服务器IP</string>
-    <string name="empty_ip_address">空的IP地址！</string>
     <string name="btn_apply">应用</string>
     <string name="cancel">取消</string>
     <string name="dialog_need_username">需要用户名！！</string>

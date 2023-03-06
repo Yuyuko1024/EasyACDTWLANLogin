@@ -1,5 +1,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Easy Dr.COM WLAN Login</string>
+    <string name="app_name">Easy ACDT WLAN Login</string>
     <string name="postDomain" translatable="false">http://<xliff:g id="authIP">%s</xliff:g>:801/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=<xliff:g id="authIP">%s</xliff:g>&amp;iTermType=1&amp;wlanuserip=<xliff:g
             id="myIpAddress">
         %s</xliff:g>&amp;wlanacip=null&amp;wlanacname=null&amp;mac=00-00-00-00-00-00&amp;ip=<xliff:g id="myIpAddress">
@@ -22,19 +22,9 @@
     <string name="server_status_ok">Auth Server status: Available</string>
     <string name="about">About</string>
     <string name="about_text">I don\'t know why i created it XD</string>
-    <string name="auth_server_settings">Auth Server Address</string>
-    <string name="auth_server_settings_text">Set Auth Server IP Address (Only support Dr.COM Auth server), current
-        server IP: %s
-    </string>
     <string name="got_it">Got it !</string>
-    <string name="enable_custom_auth_server">Enable Custom Auth Server</string>
-    <string name="enable_custom_auth_server_text">If your college\'s authentication server address is different from the
-        app\'s, you can enable this setting to customize the authentication server address
-    </string>
     <string name="is_checking_states">Checking the auth server status, don\'t worry :D</string>
     <string name="not_implement_yet">I haven\'t figured out what function to write here XD</string>
-    <string name="hint_custom_auth">Custom Auth Server IP</string>
-    <string name="empty_ip_address">Empty IP Address !</string>
     <string name="btn_apply">Apply</string>
     <string name="cancel">Cancel</string>
     <string name="dialog_need_username">Need Username !!!!!</string>
@@ -89,5 +79,5 @@
     <string name="debug_app_run_magic">The App runs in a parallel window</string>
     <string name="debug_app_not_run_magic">The App is not running in a parallel window</string>
     <string name="debug_pref_title">Debug mode</string>
-    <string name="debug_pref_summary">Enable App\'s debug mode. Strange things may happen...</string>
+    <string name="debug_pref_summary">Enable App\'s debug mode. Strange things may happen…</string>
 </resources>

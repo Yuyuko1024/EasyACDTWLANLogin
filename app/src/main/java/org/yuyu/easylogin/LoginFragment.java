@@ -60,9 +60,9 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     MaterialTextView auth_server_status,wifi_name;
     TextInputEditText username,password;
     AppCompatSpinner spin_carrier;
-    String sharedUsername,sharedPassword,customAuthServer;
+    String sharedUsername,sharedPassword;
     LoginCore loginCore;
-    boolean is_remember_passwd,isCheckState=false,isCustomAuthServer,isInternetAvailable,isIgnoreGrant=false,isDebug=true;
+    boolean is_remember_passwd,isCheckState=false,isInternetAvailable,isIgnoreGrant=false,isDebug=true;
     long sharedCarrier;
 
     @Nullable
@@ -149,19 +149,12 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         sharedUsername=AccountEditor.readAccount(getContext());
         sharedPassword=AccountEditor.readPassword(getContext());
         sharedCarrier=AccountEditor.readCarrierId(getContext());
-        isCustomAuthServer =sharedPreferences.getBoolean("enable_custom_auth_server",false);
-        customAuthServer=sharedPreferences.getString("auth_server_ip",null);
         isIgnoreGrant=sharedPreferences.getBoolean("ignore_grant",false);
-        Log.e("isCustomAuthServer",String.valueOf(isCustomAuthServer));
         isDebug=sharedPreferences.getBoolean("debug_mode",false);
         if (isDebug){
             Toasty.warning(requireContext(),"Debug is on the way",Toasty.LENGTH_SHORT,true).show();
         }
-        if(isCustomAuthServer){
-            authStatusCheck(customAuthServer);
-        }else{
-            authStatusCheck(getString(R.string.auth_server));
-        }
+        authStatusCheck(getString(R.string.auth_server));
     }
 
     private void authStatusCheck(String authIP){
@@ -224,13 +217,6 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
             case "carrier":
                 sharedCarrier=sharedPreferences.getLong("carrier",0);
                 break;
-            case "auth_server_ip":
-                customAuthServer=sharedPreferences.getString("auth_server_ip",null);
-                Log.d("Readed Custom IP",customAuthServer);
-                break;
-            case "enable_custom_auth_server":
-                isCustomAuthServer =sharedPreferences.getBoolean("enable_custom_auth_server",false);
-                break;
         }
     }
 
@@ -272,11 +258,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
                 Snackbar.make(requireView(),R.string.is_checking_states,Snackbar.LENGTH_LONG).show();
             }else{
                 auth_server_status.setText(R.string.server_status_default);
-                if(isCustomAuthServer){
-                    authStatusCheck(customAuthServer);
-                }else{
-                    authStatusCheck(getString(R.string.auth_server));
-                }
+                authStatusCheck(getString(R.string.auth_server));
             }
         }
     }
@@ -394,16 +376,9 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         Thread thread = new Thread(() -> {
             try {
                 Thread.sleep(time);
-                if(isCustomAuthServer){
-                    if (isAdded()){
-                        LoginCore.LoginWithUsernamePwd(username.getText().toString(),password.getText().toString(),
-                                getCarrierTextId(spin_carrier.getSelectedItemId()),customAuthServer,getContext());
-                    }
-                }else{
-                    if (isAdded()) {
-                        LoginCore.LoginWithUsernamePwd(username.getText().toString(), password.getText().toString(),
-                                getCarrierTextId(spin_carrier.getSelectedItemId()), getString(R.string.auth_server), getContext());
-                    }
+                if (isAdded()) {
+                    LoginCore.LoginWithUsernamePwd(username.getText().toString(), password.getText().toString(),
+                            getCarrierTextId(spin_carrier.getSelectedItemId()), getString(R.string.auth_server), getContext());
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

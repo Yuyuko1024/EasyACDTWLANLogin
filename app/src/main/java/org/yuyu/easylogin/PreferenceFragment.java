@@ -28,11 +28,10 @@ import de.psdev.licensesdialog.model.Notices;
 
 public class PreferenceFragment extends PreferenceFragmentCompat {
 
-    Preference about,custom_auth_server,opensource_license;
+    Preference about,opensource_license;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedEditor;
-    ATESwitchPreference enable_custom_auth_server,enable_debug_mode;
-    TextInputEditText custom_auth_input;
+    ATESwitchPreference enable_debug_mode;
     private static final String SHARED_STRING = "LOGIN_INFO";
 
     @Override
@@ -41,9 +40,7 @@ public class PreferenceFragment extends PreferenceFragmentCompat {
         sharedPreferences = requireActivity().getSharedPreferences(SHARED_STRING,Context.MODE_PRIVATE);
         sharedEditor = sharedPreferences.edit();
         about=findPreference("about");
-        custom_auth_server=findPreference("auth_server");
         opensource_license=findPreference("opensource_license");
-        enable_custom_auth_server=findPreference("enable_custom_auth_server");
         enable_debug_mode=findPreference("enable_debug_mode");
         if (enable_debug_mode != null) {
             if (!BuildConfig.DEBUG){
@@ -86,65 +83,5 @@ public class PreferenceFragment extends PreferenceFragmentCompat {
                 return true;
             });
         }
-        if(enable_custom_auth_server != null) {
-            enable_custom_auth_server.setOnPreferenceChangeListener((preference, newValue) -> {
-                final String key = preference.getKey();
-                if("enable_custom_auth_server".equals(key)){
-                    if(enable_custom_auth_server.isChecked()!=(boolean)newValue) {
-                        boolean value = (boolean) newValue;
-                        custom_auth_server.setEnabled(value);
-                        sharedEditor.putBoolean("enable_custom_auth_server",value);
-                        sharedEditor.commit();
-                        String summary_text;
-                        if(value){
-                            summary_text = getString(R.string.auth_server_settings_text, sharedPreferences.getString("auth_server_ip", null));
-                        }else{
-                            summary_text = getString(R.string.auth_server_settings_text, getString(R.string.auth_server));
-                        }
-                        custom_auth_server.setSummary(summary_text);
-                    }
-                }
-                return true;
-            });
-        }
-        if(sharedPreferences.getBoolean("enable_custom_auth_server",false)){
-            custom_auth_server.setEnabled(true);
-            String summary_text = getString(R.string.auth_server_settings_text,sharedPreferences.getString("auth_server_ip",null));
-            custom_auth_server.setSummary(summary_text);
-        }else{
-            custom_auth_server.setEnabled(false);
-            String summary_text = getString(R.string.auth_server_settings_text,getString(R.string.auth_server));
-            custom_auth_server.setSummary(summary_text);
-        }
-        custom_auth_server.setOnPreferenceClickListener(preference -> {
-            LayoutInflater inflater = getLayoutInflater();
-            final View inputLayout = inflater.inflate(R.layout.dialog_custom_auth_srv, null);
-            custom_auth_input=inputLayout.findViewById(R.id.custom_auth_input);
-            if(sharedPreferences.getString("auth_server_ip",null) == null){
-                custom_auth_input.setText(getString(R.string.auth_server));
-            }else{
-                custom_auth_input.setText(sharedPreferences.getString("auth_server_ip",null));
-            }
-            new MaterialAlertDialogBuilder(requireActivity())
-                    .setTitle(R.string.auth_server_settings)
-                    .setMessage(R.string.dialog_auth_server_settings_text)
-                    .setView(inputLayout)
-                    .setCancelable(false)
-                    .setPositiveButton(R.string.btn_apply, (dialogInterface, i) -> {
-                        if(!Objects.requireNonNull(custom_auth_input.getText()).toString().equals("")){
-                            sharedEditor.putString("auth_server_ip",custom_auth_input.getText().toString());
-                            sharedEditor.commit();
-                            Log.d("Custom IP Address",custom_auth_input.getText().toString());
-                            String summary_text = getString(R.string.auth_server_settings_text,custom_auth_input.getText().toString());
-                            custom_auth_server.setSummary(summary_text);
-                        }else{
-                            Snackbar.make(requireView(),R.string.empty_ip_address,Snackbar.LENGTH_LONG).show();
-                        }
-                    })
-                    .setNegativeButton(R.string.cancel,null)
-                    .create()
-                    .show();
-            return true;
-        });
     }
 }

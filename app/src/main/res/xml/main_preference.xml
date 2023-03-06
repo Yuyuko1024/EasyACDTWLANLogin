@@ -14,21 +14,6 @@
         android:key="opensource_license"/>
 
     <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
-        android:title="@string/enable_custom_auth_server"
-        android:summary="@string/enable_custom_auth_server_text"
-        android:key="enable_custom_auth_server"
-        android:icon="@drawable/twotone_router_24"
-        android:defaultValue="false"
-        android:layout="@layout/list_item_view_switch"
-        android:enabled="true"/>
-
-    <Preference
-        android:icon="@drawable/twotone_server_24"
-        android:enabled="false"
-        android:key="auth_server"
-        android:title="@string/auth_server_settings"/>
-
-    <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
         android:title="@string/debug_pref_title"
         android:summary="@string/debug_pref_summary"
         android:key="enable_debug_mode"
