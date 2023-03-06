@@ -58,4 +58,5 @@
     <string name="debug_app_not_run_magic">App 没有运行于 平行视窗中</string>
     <string name="debug_pref_title">调试模式</string>
     <string name="debug_pref_summary">开启App的Debug功能，这可能会发生一些奇怪的事情...</string>
+    <string name="content_desc_password_show">显示/隐藏密码</string>
 </resources>

@@ -56,7 +56,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     private final long[] mHits = new long[ACTIVITY_TRIGGER_COUNT];
     private BannerViewPager<BannerDataBean> mBannerPager;
     MaterialButton btn_login;
-    MaterialCheckBox remember_password,show_password;
+    MaterialCheckBox remember_password;
     MaterialTextView auth_server_status,wifi_name;
     TextInputEditText username,password;
     AppCompatSpinner spin_carrier;
@@ -80,7 +80,6 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         password=requireView().findViewById(R.id.password);
         spin_carrier=requireView().findViewById(R.id.carrier);
         auth_server_status=requireView().findViewById(R.id.server_status);
-        show_password=requireView().findViewById(R.id.show_passowrd);
         wifi_name=requireView().findViewById(R.id.wifi_name_text);
         loadSettings();
         setupBannerPager();
@@ -88,8 +87,8 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         remember_password.setOnClickListener(new RememberFunc());
         auth_server_status.setOnClickListener(new ReCheckFunc());
         username.setText(AccountEditor.readAccount(getContext()));
+        password.setTransformationMethod(PasswordTransformationMethod.getInstance());
         btn_login.setEnabled(false);
-        show_password.setOnClickListener(new ShowPasswdFunc());
         loginCore = new LoginCore();
         requestPermissions();
         if(AccountEditor.isRememberPassword(getContext())) {
@@ -238,17 +237,6 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
     @Override
     public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
         //do nothing
-    }
-
-    class ShowPasswdFunc implements View.OnClickListener{
-        @Override
-        public void onClick(View view) {
-            if(show_password.isChecked()){
-                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            }else{
-                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-        }
     }
 
     class ReCheckFunc implements View.OnClickListener{

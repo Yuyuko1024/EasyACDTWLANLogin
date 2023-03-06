@@ -19,21 +19,22 @@
             android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_margin="4dp" />
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp" />
 
     </RelativeLayout>
 
-    <com.google.android.material.card.MaterialCardView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/banner_view"
         android:backgroundTint="@color/background"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:cardElevation="6dp"
-        app:cardMaxElevation="12dp"
-        app:state_dragged="true">
+        android:layout_marginTop="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
 
         <RelativeLayout
             android:id="@+id/account"
@@ -66,27 +67,20 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:id="@+id/username_layout"
-                    android:layout_width="260dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/wlan_name_panel"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/ic_baseline_account_box_24"
-                    tools:ignore="ContentDescription"/>
+                android:id="@+id/username_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/wlan_name_panel"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                    style="@style/Material3EditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/username"
@@ -103,26 +97,21 @@
 
             <LinearLayout
                 android:id="@+id/password_layout"
-                android:layout_width="260dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/username_layout"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:layout_margin="8dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/baseline_password_24"
-                    tools:ignore="ContentDescription"/>
-
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                    style="@style/Material3EditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleContentDescription="@string/content_desc_password_show">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/password"
@@ -130,68 +119,65 @@
                         android:layout_height="wrap_content"
                         android:autofillHints="password"
                         android:hint="@string/password"
-                        android:inputType="textPassword"/>
+                        android:inputType="textPassword" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/carrier_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/password_layout"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/choose_carrier_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/choose_carrier"/>
-
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/carrier"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/choose_carrier_text"
-                    android:entries="@array/carrier_name"
-                    android:spinnerMode="dropdown"/>
-
-            </RelativeLayout>
-
             <LinearLayout
-                android:id="@+id/checkbox_layout"
-                android:layout_width="260dp"
+                android:id="@+id/carrier_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/carrier_layout"
-                android:layout_centerHorizontal="true">
+                android:orientation="horizontal"
+                android:layout_margin="8dp"
+                android:layout_below="@id/password_layout">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/choose_carrier_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/choose_carrier"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/carrier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/carrier_name"
+                        android:spinnerMode="dropdown"/>
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
                 <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/remember_password"
-                    android:layout_width="130dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical|end"
                     android:text="@string/remem_passwd"/>
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/show_passowrd"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/show_password"/>
 
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login"
-                android:layout_width="200dp"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/checkbox_layout"
+                android:layout_below="@id/carrier_layout"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:layout_margin="8dp"
                 android:text="@string/btn_login"
                 android:textSize="14sp"
                 style="@style/Material3Button"
@@ -203,12 +189,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/login"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:layout_margin="8dp"
                 android:text="@string/server_status_default"/>
 
         </RelativeLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 
 
 

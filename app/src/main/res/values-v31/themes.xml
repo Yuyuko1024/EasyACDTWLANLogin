@@ -26,4 +26,11 @@
         <item name="backgroundTint">@color/system_accent_soft</item>
         <item name="elevation">10dp</item>
     </style>
+
+    <style name="Material3EditText" parent="ThemeOverlay.Material3.TextInputEditText.FilledBox">
+        <item name="boxCornerRadiusTopStart">36dp</item>
+        <item name="boxCornerRadiusTopEnd">36dp</item>
+        <item name="boxCornerRadiusBottomStart">36dp</item>
+        <item name="boxCornerRadiusBottomEnd">36dp</item>
+    </style>
 </resources>
