@@ -269,9 +269,6 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
         mBannerPager.setLifecycleRegistry(getLifecycle())
                 .setAdapter(new AppBannerAdapter())
                 .setAutoPlay(true)
-                .setIndicatorStyle(IndicatorStyle.ROUND_RECT)
-                .setIndicatorSlideMode(IndicatorSlideMode.SCALE)
-                .setIndicatorSliderColor(getResources().getColor(R.color.system_accent),getResources().getColor(R.color.white_alpha))
                 .create();
         mBannerPager.refreshData(list);
     }
