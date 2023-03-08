@@ -1,10 +1,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Easy ACDT WLAN Login</string>
-    <string name="postDomain" translatable="false">http://<xliff:g id="authIP">%s</xliff:g>:801/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=<xliff:g id="authIP">%s</xliff:g>&amp;iTermType=1&amp;wlanuserip=<xliff:g
-            id="myIpAddress">
-        %s</xliff:g>&amp;wlanacip=null&amp;wlanacname=null&amp;mac=00-00-00-00-00-00&amp;ip=<xliff:g id="myIpAddress">
-        %s</xliff:g>&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1
-    </string>
+    <string name="loginUrl" translatable="false">http://<xliff:g id="authIP">%s</xliff:g>:801/eportal/?c=ACSetting&amp;a=Login&amp;protocol=http:&amp;hostname=<xliff:g id="authIP">%s</xliff:g>&amp;iTermType=1&amp;wlanuserip=<xliff:g id="myIpAddress">%s</xliff:g>&amp;wlanacip=null&amp;wlanacname=null&amp;mac=00-00-00-00-00-00&amp;ip=<xliff:g id="myIpAddress">%s</xliff:g>&amp;enAdvert=0&amp;queryACIP=0&amp;loginMethod=1</string>
+    <string name="logoutUrl" translatable="false">http://<xliff:g id="authIP">%s</xliff:g>:801/eportal/?c=ACSetting&amp;a=Logout&amp;wlanuserip=<xliff:g id="myIpAddress">%s</xliff:g>&amp;wlanacip=172.16.172.1&amp;wlanacname=ME60&amp;port=&amp;hostname=<xliff:g id="authIP">%s</xliff:g>&amp;iTermType=1&amp;session=&amp;queryACIP=0&amp;mac=</string>
     <string name="user_account">User Account</string>
     <string name="password">Password</string>
     <string name="btn_login">Login</string>
@@ -81,4 +78,7 @@
     <string name="debug_pref_title">Debug mode</string>
     <string name="debug_pref_summary">Enable App\'s debug mode. Strange things may happen…</string>
     <string name="content_desc_password_show">Show / Hide Password</string>
+    <string name="btn_logout">Logout</string>
+    <string name="pref_title_about">About App</string>
+    <string name="pref_title_more_settings">More Settings</string>
 </resources>

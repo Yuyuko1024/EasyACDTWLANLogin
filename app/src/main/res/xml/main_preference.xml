@@ -1,24 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <Preference
-        android:icon="@drawable/twotone_info_24"
-        android:enabled="true"
-        android:key="about"
-        android:summary="@string/about_text"
-        android:title="@string/about" />
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:preference="http://schemas.android.com/tools">
 
-    <Preference
-        android:icon="@drawable/twotone_fact_check_24"
-        android:title="@string/opensource_license"
-        android:summary="@string/opensource_license_text"
-        android:key="opensource_license"/>
+    <PreferenceCategory
+        android:title="@string/pref_title_about"
+        app:allowDividerBelow="false"
+        app:allowDividerAbove="false">
 
-    <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
-        android:title="@string/debug_pref_title"
-        android:summary="@string/debug_pref_summary"
-        android:key="enable_debug_mode"
-        android:icon="@drawable/ic_debug_mode"
-        android:defaultValue="false"
-        android:layout="@layout/list_item_view_switch"/>
+        <Preference
+            android:icon="@drawable/twotone_info_24"
+            android:enabled="true"
+            android:key="about"
+            android:summary="@string/about_text"
+            android:title="@string/about" />
+
+        <Preference
+            android:icon="@drawable/twotone_fact_check_24"
+            android:title="@string/opensource_license"
+            android:summary="@string/opensource_license_text"
+            android:key="opensource_license"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_title_more_settings"
+        app:initialExpandedChildrenCount="0"
+        app:allowDividerBelow="false"
+        app:allowDividerAbove="false">
+
+        <code.name.monkey.appthemehelper.common.prefs.supportv7.ATESwitchPreference
+            android:title="@string/debug_pref_title"
+            android:summary="@string/debug_pref_summary"
+            android:key="enable_debug_mode"
+            android:icon="@drawable/ic_debug_mode"
+            android:defaultValue="false"
+            android:layout="@layout/list_item_view_switch" />
+
+    </PreferenceCategory>
+
+    <org.yuyu.easylogin.widget.ButtonPreference
+        android:key="logout_pref"
+        app:btn_text="@string/btn_logout"
+        app:btn_icon="@drawable/ic_logout"/>
 
 </androidx.preference.PreferenceScreen>

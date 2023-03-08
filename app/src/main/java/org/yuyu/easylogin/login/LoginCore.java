@@ -38,8 +38,8 @@ public class LoginCore {
         String myIpAddress = intToIp(wifiInfo.getIpAddress());
         Log.d("Get Wifi IP Address",myIpAddress);
         Log.d("Get Auth Server IP",authIP);
-        String postDomain = context.getString(R.string.postDomain,authIP,authIP,myIpAddress,myIpAddress);
-        Log.d("Formated PostDomain:",postDomain);
+        String loginUrl = context.getString(R.string.loginUrl,authIP,authIP,myIpAddress,myIpAddress);
+        Log.d("Formated loginUrl:",loginUrl);
         OkHttpClient okHttpClient = new OkHttpClient();
         RequestBody requestBody = new FormBody.Builder()
                 .add("DDDDD",username+"@"+carrier)
@@ -52,7 +52,7 @@ public class LoginCore {
                 .add("0MKKey",Constant.OMKKey)
                 .build();
         Request request = new Request.Builder()
-                .url(postDomain)
+                .url(loginUrl)
                 .post(requestBody)
                 .build();
         okHttpClient.newCall(request).enqueue(new Callback() {
@@ -81,6 +81,15 @@ public class LoginCore {
                 }
             }
         });
+    }
+
+    public static void logout(String authIP, Context context) {
+        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        String myIpAddress = intToIp(wifiInfo.getIpAddress());
+        Log.d("Get Wifi IP Address",myIpAddress);
+        String logoutUrl = context.getString(R.string.logoutUrl,authIP,myIpAddress,authIP);
+        Log.d("Formated logoutUrl:",logoutUrl);
     }
 
     private static void isCaptiveSuccess(){

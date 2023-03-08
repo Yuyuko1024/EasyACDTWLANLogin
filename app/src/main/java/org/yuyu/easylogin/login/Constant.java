@@ -20,6 +20,22 @@ public class Constant {
 
     public static final String OMKKey = "123456" ;
 
+    public static final String buttonClicked = "";
+
+    public static final String redirect_url = "";
+
+    public static final String err_flag = "";
+
+    public static final String username = "";
+
+    public static final String password = "";
+
+    public static final String user = "";
+
+    public static final String cmd = "";
+
+    public static final String Login = "";
+
     public static final String CAPTIVE_HTTPS_204_URL = "https://connect.rom.miui.com/generate_204";
 
     public static final int CAPTIVE_SOCKET_TIMEOUT_MS = 5000;

@@ -15,4 +15,10 @@
         <!-- Customize your theme here. -->
         <item name="android:navigationBarColor">@color/primary</item>
     </style>
+
+    <declare-styleable name="ButtonPreference">
+        <attr name="btn_icon" format="reference" />
+        <attr name="btn_text" format="string" />
+        <attr name="isClickable" format="boolean" />
+    </declare-styleable>
 </resources>
