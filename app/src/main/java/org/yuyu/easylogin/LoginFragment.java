@@ -103,7 +103,7 @@ public class LoginFragment extends Fragment implements SharedPreferences.OnShare
 
     private void requestPermissions(){
         String[] perms;
-        if (Build.VERSION.SDK_INT==33){
+        if (Build.VERSION.SDK_INT>=33){
             perms = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.POST_NOTIFICATIONS};
         } else {
             perms = new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
